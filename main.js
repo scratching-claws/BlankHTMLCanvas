@@ -70,32 +70,39 @@ function importImages(){
 }
 
 function gameLoop(){
-    //Add your code here
-    //This code will be run each frame of your game
+   try {
+        //Add your code here
+        //This code will be run each frame of your game
 
-    clearCanvas()
+        clearCanvas()
 
-    canvas.beginPath();
-    canvas.moveTo(20, 20);
-    canvas.lineTo(20, 100);
-    canvas.lineTo(70, 100);
-    canvas.stroke();
+        canvas.beginPath();
+        canvas.moveTo(20, 20);
+        canvas.lineTo(20, 100);
+        canvas.lineTo(70, 100);
+        canvas.stroke();
 
 
-    //animations can be created by redrawing each frame and moving or changing part of it
-    //here, the rectangle is animated, by sizing it based on the current time
-    canvas.fillStyle = "red"
-    canvas.fillRect(width/2-30,height/2+60,60,Math.sin(Date.now()/100)*50)
+        //animations can be created by redrawing each frame and moving or changing part of it
+        //here, the rectangle is animated, by sizing it based on the current time
+        canvas.fillStyle = "red"
+        canvas.fillRect(width/2-30,height/2+60,60,Math.sin(Date.now()/100)*50)
 
-    canvas.drawImage(document.getElementById("scratchBlock"),10,10)
+        canvas.drawImage(document.getElementById("scratchBlock"),10,10)
 
-    //text
-    canvas.font = "20px Poppins";
-    canvas.textAlign="center"
-    canvas.fillText("Welcome to HTML canvas!", width/2, height/2-60);
+        //text
+        canvas.font = "20px Poppins";
+        canvas.textAlign="center"
+        canvas.fillText("Welcome to HTML canvas!", width/2, height/2-60);
 
-    keyPresses = []
+        //clear keypresses from the current frame.
+        keyPresses = []
+    } catch (e) {
+        //Errors are handled here
+        console.error("An error occurred in the gameLoop function:\n"+e)
+    }
+
 }
 } catch (e){
-    console.error(e)
+    console.error("An error occurred outside of the gameLoop function:\n"+e)
 }
